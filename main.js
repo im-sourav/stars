@@ -1,4 +1,3 @@
-
 const SCALE = 4;
 const MAX = 1000;
 const FPS = 90;
@@ -11,10 +10,12 @@ let minSize = (wh > ww ? ww : wh) * SCALE;
 let w = wh > ww ? "100vw" : "100vh";
 
 /* functions */
-const speedControl = (x, stars) => {
+const control = (x, y, stars) => {
    let speed = map(x, 0, minSize / 4, 0, 100);
+   let color = map(y, 0, minSize / 4, 0, 765);
    stars.forEach((e) => {
       e.speed = speed;
+      e.updateColor(color);
    })
 }
 
@@ -30,11 +31,11 @@ for (let i = 0; i < MAX; i++) {
 }
 
 cvs.cvs.addEventListener("mousemove", (e) => {
-   speedControl(e.clientX, stars);
+   control(e.clientX, e.clientY, stars);
 });
 
 cvs.cvs.addEventListener("touchmove", (e) => {
-   speedControl(e.touches[0].clientX, stars);
+   control(e.touches[0].clientX, e,touches[0].clientY, stars);
 });
 
 
