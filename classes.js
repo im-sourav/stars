@@ -23,8 +23,8 @@ class Star {
       this.b = 255;
     }else {
       this.r = 255 - Math.round(y);
-      this.g = 0;
-      this.b = 255;
+      this.g = 255;
+      this.b = 0;
     }
   }
 
